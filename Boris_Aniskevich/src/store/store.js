@@ -7,6 +7,7 @@ import { createBrowserHistory } from 'history'
 import chatReducer from 'reducers/chatReducer'
 import messageReducer from 'reducers/messageReducer'
 import userReducer from 'reducers/userReducer'
+import appReducer from 'reducers/appReducer'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 export const history = createBrowserHistory()
@@ -17,6 +18,7 @@ const reducers = history => combineReducers({
     form: formReducer,
     user: userReducer,
     router: connectRouter(history),
+    app: appReducer,
 })
 
 export const store = createStore(reducers(history), composeEnhancers(applyMiddleware(routerMiddleware(history), thunk)))

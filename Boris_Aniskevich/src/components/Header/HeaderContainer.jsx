@@ -1,16 +1,14 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { compose } from 'redux'
 
 import Header from './Header'
-import { getUserData, logout } from 'reducers/userReducer'
+import { logout } from 'reducers/userReducer'
+import withAuthRedirect from 'common/hoc/withAuthRedirect'
 
 class HeaderContainer extends PureComponent {
-    componentDidMount() {
-        this.props.getUserData()
-    }
     render() {
-        if (!this.props.isAuth) return <Redirect to='/auth' />
         return <Header 
                     id={this.props.id} 
                     username={this.props.username} 
@@ -20,4 +18,8 @@ class HeaderContainer extends PureComponent {
     }
 }
 
-export default withRouter(connect(state => ({...state.user}), {getUserData, logout})(HeaderContainer))
+export default compose(
+    connect(state => ({...state.user}), {logout}),
+    withRouter,
+    withAuthRedirect
+)(HeaderContainer)

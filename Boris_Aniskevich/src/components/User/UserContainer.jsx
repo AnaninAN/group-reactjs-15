@@ -10,9 +10,6 @@ class UserContainer extends PureComponent {
     state = {
         toggleForm: true,
     }
-    componentDidMount() {
-        this.props.getUserData()
-    }
     handleToggleForm = () => {
         this.setState({ toggleForm: !this.state.toggleForm })
     }

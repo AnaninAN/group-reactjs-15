@@ -4,20 +4,13 @@ import Message from './Message'
 import SendMessageForm from './SendMessageForm'
 
 import style from './Message.module.scss'
+import Card from 'components/Card/Card'
 
 const MessageList = props => {
     return (
         <div className={style.messageList}>
             <div className={style.header}>
-                <div className={style.avatarWrapper}>
-                    <div className={style.image}>
-                        U
-                    </div>
-                </div>
-                <div className={style.description}>
-                    <h5 className={style.h5}>Chat name</h5>
-                    <p>Lorem ipsum......</p>
-                </div>
+                <Card primary='Chat name' secondary='Lorem ipsum ....' />
             </div>
             <div className={style.messagesLayout}>
                 <div className={style.messagesWrapper}>

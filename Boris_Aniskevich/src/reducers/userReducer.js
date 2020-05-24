@@ -32,7 +32,7 @@ const setContacts = payload => ({type: SET_CONTACTS, payload})
 
 export const getUserData = () => dispatch => {
     dispatch(setIsLoading(true))
-    userAPI.checkAuth().then(response => response.data).catch(error => error.response.data).then(data => {
+    return userAPI.checkAuth().then(response => response.data).catch(error => error.response.data).then(data => {
         if (+data.resultCode === 0) {
             dispatch(setUserData({...data.user, isAuth: true}))
         } 

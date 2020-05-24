@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import Chat from './Chat'
 import Contact from './Contact'
