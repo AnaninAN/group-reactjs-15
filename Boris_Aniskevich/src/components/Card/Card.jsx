@@ -2,14 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import style from './Card.module.scss'
+import Avatar from 'common/avatar.svg'
 
 const Card = props => {
     return (
         <div className={style.card}>
             <div className={style.avatarWrapper}>
-                <div className={style.image}>
-                    U
-                </div>
+                <Avatar />
             </div>
             <div className={style.bodyWrapper}>
             {props.link 

@@ -45,6 +45,20 @@ module.exports = {
                     'sass-loader',
                 ],
             },
+            {
+                test: /\.svg$/,
+                use: [
+                  {
+                    loader: "babel-loader"
+                  },
+                  {
+                    loader: "react-svg-loader",
+                    options: {
+                      jsx: true
+                    }
+                  }
+                ]
+            },
         ],
     },
     devServer: {
