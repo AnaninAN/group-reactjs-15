@@ -2,10 +2,12 @@ import React from 'react'
 
 import Chat from './Chat'
 import Contact from './Contact'
+import Preloader from 'components/Preloader/Preloader'
 
 import style from './Chat.module.scss'
 
 const ChatList = props => {
+    {if (props.isLoading) return <Preloader />}
     return (
         <div className={style.chatList}>
             <div className={style.header}>

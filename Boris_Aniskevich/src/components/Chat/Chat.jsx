@@ -12,7 +12,7 @@ const Chat = props => {
         <div className={style.layout}>
             <Card 
                 primary={props.chat.name}
-                secondary='Lorem ipsum ....'
+                secondary='Contact status'
                 link={`/chat/${props.chat._id}`}
             >
                 <button onClick={deleteChat} value={props.chat._id} className={style.button}>x</button>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import MessageList from './MessageList'
 import { getMessages, sendMessage } from 'reducers/messageReducer'
+import Preloader from 'components/Preloader/Preloader'
 
 class MessageContainer extends PureComponent {
     componentDidMount() {
@@ -18,13 +19,16 @@ class MessageContainer extends PureComponent {
 
     render() {
         const { isLoading, user } = this.props
+        {if (isLoading) return <Preloader />}
         const id = this.props.match.params.id
         const messages = this.props.messages.filter(message => message.chatId == id)
+        const chat = this.props.chats.filter(chat => chat._id === id)[0] || ''
         return <MessageList 
             messages={messages} 
             isLoading={isLoading}
             sendMessage={this.handleMessageSend}
             user={user}
+            chat={chat}
         />
     }
 }
@@ -34,6 +38,7 @@ const mapStateToProps = state => {
         messages: state.message.messages,
         user: state.user,
         isLoading: state.message.isLoading,
+        chats: state.chat.chats,
     }
 }
 

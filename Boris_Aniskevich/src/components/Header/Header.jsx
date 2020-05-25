@@ -6,6 +6,7 @@ import style from './Header.module.scss'
 const Header = props => {
     return (
         <div className={style.header}>
+            <div className={style.username}>{props.username}</div>
                 {
                     props.location === '/profile'
                     ? <button className={style.button}><Link to='/chat'>Chats</Link></button>

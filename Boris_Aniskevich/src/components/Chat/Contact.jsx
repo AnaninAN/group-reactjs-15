@@ -12,7 +12,7 @@ const Contact = props => {
         <div className={style.layout}>
             <Card 
                 primary={props.contact.username}
-                secondary='Lorem ipsum ....'
+                secondary='Contact status'
             >
                 <button onClick={createChat} value={props.contact._id} className={style.button}>+</button>
             </Card>

@@ -10,13 +10,18 @@ const MessageList = props => {
     return (
         <div className={style.messageList}>
             <div className={style.header}>
-                <Card primary='Chat name' secondary='Lorem ipsum ....' />
+                <Card primary={props.chat.name} secondary='some helpful info' />
             </div>
             <div className={style.messagesLayout}>
                 <div className={style.messagesWrapper}>
                 {
                     props.messages.map(message => {
-                        return <Message key={message._id} message={message} user={props.user}/>
+                        return <Message 
+                                    key={message._id} 
+                                    message={message} 
+                                    user={props.user} 
+                                    chat={props.chat}
+                                />
                     })
                 }
                 </div>
