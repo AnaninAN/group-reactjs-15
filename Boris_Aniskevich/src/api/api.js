@@ -46,6 +46,15 @@ export const userAPI = {
             headers: {'Authorization': `Bearer ${localStorage.token}`},
         })
     },
+    updateProfile(values) {
+        return instance.request({
+            url: `/users`, 
+            method: 'put', 
+            headers: {'Authorization': `Bearer ${localStorage.token}`},
+            data: {...values},
+        })
+    },
 }
 
 //return instance.request({url: '/auth', method: 'post', headers: {}, data: {...user}})
+        

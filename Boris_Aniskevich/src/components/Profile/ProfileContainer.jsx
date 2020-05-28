@@ -2,13 +2,20 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
 import Profile from './Profile'
+import { updateProfile } from 'reducers/userReducer'
 
 class ProfileContainer extends PureComponent {
     render() {
         return (
-            <Profile id={this.props.id} username={this.props.username} />
+            <Profile user={this.props.user} onSubmit={this.props.updateProfile} />
         )
     }
 }
 
-export default connect(state => ({...state.user}), {})(ProfileContainer)
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+    }
+}
+
+export default connect(mapStateToProps, {updateProfile})(ProfileContainer)

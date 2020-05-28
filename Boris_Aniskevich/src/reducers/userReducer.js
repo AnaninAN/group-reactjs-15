@@ -9,6 +9,10 @@ const SET_CONTACTS = 'SET_CONTACTS'
 const initialState = {
     id: null,
     username: null,
+    email: null,
+    info: null,
+    avatar: null,
+    status: null,
     isLoading: false,
     isAuth: false,
     contacts: [],
@@ -78,6 +82,16 @@ export const getContacts = () => dispatch => {
             dispatch(setContacts(data))
         } 
     dispatch(setIsLoading(false))
+    })
+}
+
+export const updateProfile = values => dispatch => {
+    dispatch(setIsLoading(true))
+    return userAPI.updateProfile(values).then(response => response.data).catch(error => error.response.data).then(data => {
+        if (+data.resultCode === 0) {
+           dispatch(setUserData({...data.user}))
+        } 
+        dispatch(setIsLoading(false))
     })
 }
 

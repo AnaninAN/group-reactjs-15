@@ -34,6 +34,29 @@ createUser = (req, res) => {
     })
 }
 
+updateUser = async (req, res) => {
+    const token = req.headers['authorization'].split(' ')[1]
+    if (!token) {
+        return res.status(401).json({
+            resultCode: 1,
+            message: 'Unauthorized',
+        })
+    }
+    const responce = await utils.verifyToken(token)
+    if (responce.resultCode !== 0) {
+        return res.status(401).json(responce)
+    } else {
+        await User.findByIdAndUpdate(responce.user.id, req.body, {useFindAndModify: false}, async () => {
+            const user = await User.findOne({_id: responce.user.id},  '_id username email status info')
+            return res.status(200).json({
+                resultCode: 0,
+                user
+            })
+        })  
+    }
+}
+
+
 checkAuth = async (req, res) => {
     const token = req.headers['authorization'].split(' ')[1]
     if (!token) {
@@ -100,4 +123,5 @@ module.exports = {
     signin,
     checkAuth,
     getContacts,
+    updateUser,
 }

@@ -18,7 +18,7 @@ generateToken = user => {
 verifyToken = token => {
     return jwt.verify(token, SECRET, async (err, token) => {
         if (err) throw err
-        const user = await User.findById(token._id)
+        const user = await User.findOne({_id: token._id}, '_id username email status info')
         if (!user) {
             return {
                 resultCode: 1,
@@ -27,17 +27,14 @@ verifyToken = token => {
         } else {
             return {
                 resultCode: 0,
-                user: {
-                    id: user._id.toString(),
-                    username: user.username,
-                }
+                user
             }
         }
     })
 }
 
 generateContacts = async userId => {
-    let contacts = await User.find({_id: {$ne: userId}}, '_id username')
+    let contacts = await User.find({_id: {$ne: userId}}, '_id username email status info')
     const chats = await Chat.find({members: userId}, '_id members deletedMembers')
     let temp
     for (idx in chats) {
