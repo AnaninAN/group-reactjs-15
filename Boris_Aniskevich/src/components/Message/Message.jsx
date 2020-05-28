@@ -12,11 +12,11 @@ const Message = props => {
     const { message, user, chat } = props
     const className = classes({
         messageItem: true,
-        right: message.authorId == user.id,
-        left: message.authorId != user.id,
+        right: message.authorId === user._id,
+        left: message.authorId !== user._id,
     })
     const timestamp = new Date(message.createdAt).toLocaleString()
-    const username = message.authorId == user.id ? user.username : chat.name
+    const username = message.authorId == user._id ? user.username : chat.name
     return (
         <div className={className}>
             <div className={style.layout}>
