@@ -2,6 +2,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
 import Input from 'common/form/Input'
+import Textarea from 'common/form/Textarea'
 
 import style from './Profile.module.scss'
 
@@ -18,8 +19,7 @@ const ProfileForm = props => {
             />
             <Field 
                 name='info'
-                component={Input}
-                type='text'
+                component={Textarea}
                 label='Info'
                 validate={[]}
             />

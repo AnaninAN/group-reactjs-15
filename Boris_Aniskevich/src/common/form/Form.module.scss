@@ -10,6 +10,21 @@ span {
     margin-bottom: 1em;
 }
 
+.textarea {
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    font-family: Inter,sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: rgba(255,255,255,.4)!important;
+    text-align: justify;
+    background-color: #1a2236;
+    width: 300px;
+}
+
 .error {
     border: 1px solid red;
 }

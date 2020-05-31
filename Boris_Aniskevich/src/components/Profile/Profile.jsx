@@ -9,6 +9,7 @@ const Profile = props => {
     if (props.user.isLoading) return <Preloader />
     
     const [editMode, toggleEditMode] = useState(false)
+    const [editStatus, toggleEditStatus] = useState(false)
     
     const submitForm = formData => {
         props.onSubmit(formData)
@@ -26,7 +27,10 @@ const Profile = props => {
                         <Avatar width={100} height={100}/>
                     </div>
                     <div className={style.h5}>{props.user.username}</div>
-                    <div className={style.small}>{props.user.status}</div>
+                    {!editStatus 
+                        ?   <div className={style.small} onDoubleClick={() => toggleEditStatus(true)}>{props.user.status}</div>
+                        :   <input type="text" />
+                    }
                 </div>
                 {!editMode 
                     ? <ProfileData user={props.user} toggleEditMode={() => toggleEditMode(true)} />
@@ -48,7 +52,7 @@ const ProfileData = props => {
                 <b>Info: </b>
                 {props.user.info}
             </div>
-            <button onClick={props.toggleEditMode}>Edit</button>
+            <button onClick={props.toggleEditMode} className={style.button}>Edit</button>
         </div>
     )
 }

@@ -72,7 +72,16 @@ export const signUp = values => dispatch => {
 
 export const logout = () => dispatch => {
     localStorage.token = ''
-    dispatch(setUserData({id: null, username: null, isAuth: false}))
+    dispatch(setUserData({
+        id: null, 
+        username: null, 
+        isAuth: false,
+        email: null,
+        info: null,
+        avatar: null,
+        status: null,
+        contacts: [],
+    }))
 }
 
 export const getContacts = () => dispatch => {
