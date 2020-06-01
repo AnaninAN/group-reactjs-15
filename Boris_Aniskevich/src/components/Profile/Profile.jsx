@@ -15,6 +15,10 @@ const Profile = props => {
         props.onSubmit(formData)
         toggleEditMode(false)
     }
+
+    const setStatus = event => {
+        toggleEditStatus(false)
+    }
     
     return (
         <div className={style.main}>
@@ -28,8 +32,8 @@ const Profile = props => {
                     </div>
                     <div className={style.h5}>{props.user.username}</div>
                     {!editStatus 
-                        ?   <div className={style.small} onDoubleClick={() => toggleEditStatus(true)}>{props.user.status}</div>
-                        :   <input type="text" />
+                        ?   <div className={style.small} onDoubleClick={() => toggleEditStatus(true)}>sadasdasdasd</div>
+                        :   <input focus type="text" onBlur={setStatus}/>
                     }
                 </div>
                 {!editMode 

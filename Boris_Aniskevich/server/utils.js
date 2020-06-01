@@ -17,7 +17,12 @@ generateToken = user => {
 
 verifyToken = token => {
     return jwt.verify(token, SECRET, async (err, token) => {
-        if (err) throw err
+        if (err) {
+            return {
+                resultCode: 1,
+                message: err.message,
+            }   
+        }
         const user = await User.findOne({_id: token._id}, '_id username email status info')
         if (!user) {
             return {
