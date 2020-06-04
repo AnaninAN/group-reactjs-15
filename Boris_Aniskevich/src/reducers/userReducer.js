@@ -7,7 +7,7 @@ const IS_LOADING_TOGGLE = 'IS_LOADING_TOGGLE'
 const SET_CONTACTS = 'SET_CONTACTS'
 
 const initialState = {
-    id: null,
+    _id: null,
     username: null,
     email: null,
     info: null,
